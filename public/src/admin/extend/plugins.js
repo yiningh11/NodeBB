@@ -12,7 +12,7 @@ function handleNoPluginsFound(pluginsList) {
 }
 
 function toggleActivate(pluginID, pluginEl, btn, pluginData) {
-	console.log("YININGHE"); 
+	console.log('YININGHE');
 	socket.emit('admin.plugins.toggleActive', pluginID, function (err, status) {
 		if (err) {
 			return alerts.error(err);
@@ -40,7 +40,7 @@ function toggleActivate(pluginID, pluginEl, btn, pluginData) {
 }
 
 function handlePluginActivation(pluginData, pluginID, pluginEl, btn) {
-	console.log("YININGHE"); 
+	console.log('YININGHE');
 	if (pluginData.license && pluginData.active !== true) {
 		renderLicenseDialog(pluginData, () => toggleActivate(pluginID, pluginEl, btn, pluginData));
 	} else {
@@ -49,7 +49,7 @@ function handlePluginActivation(pluginData, pluginID, pluginEl, btn) {
 }
 
 function renderLicenseDialog(pluginData, toggleActivate) {
-	console.log("YININGHE"); 
+	console.log('YININGHE');
 	Benchpress.render('admin/partials/plugins/license', pluginData).then(function (html) {
 		bootbox.dialog({
 			title: '[[admin/extend/plugins:license.title]]',
@@ -77,7 +77,7 @@ function renderLicenseDialog(pluginData, toggleActivate) {
 }
 
 function handleInstallError(err, pluginID, btn) {
-	console.log("YININGHE"); 
+	console.log('YININGHE');
 	const errorMessage = translator.compile(
 		'admin/extend/plugins:alert.suggest-error',
 		err.status,
@@ -94,7 +94,7 @@ function handleInstallError(err, pluginID, btn) {
 }
 
 function handleInstallSuccess(payload, pluginID, btn) {
-	console.log("YININGHE"); 
+	console.log('YININGHE');
 	if (payload.version !== 'latest') {
 		Plugins.toggleInstall(pluginID, payload.version);
 	} else {
@@ -109,7 +109,7 @@ function handleInstallSuccess(payload, pluginID, btn) {
 }
 
 function processPluginSuggestion(pluginID, btn) {
-	console.log("YININGHE"); 
+	console.log('YININGHE');
 	Plugins.suggest(pluginID, function (err, payload) {
 		if (err) {
 			handleInstallError(err, pluginID, btn);
@@ -120,7 +120,7 @@ function processPluginSuggestion(pluginID, btn) {
 }
 
 function toggleInstallButtonAction(button) {
-	console.log("YININGHE"); 
+	console.log('YININGHE');
 	const btn = $(button);
 	btn.attr('disabled', true);
 	const pluginID = btn.parents('li').attr('data-plugin-id');
@@ -184,7 +184,7 @@ function toggleUpgradeButtonAction(button) {
 }
 
 function filterAndUpdatePlugins(searchInputEl) {
-	console.log("YININGHE"); 
+	console.log('YININGHE');
 	$(searchInputEl).on('input propertychange', function () {
 		const term = $(this).val();
 		filterPlugins(term);
